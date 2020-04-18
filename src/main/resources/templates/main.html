@@ -1,0 +1,93 @@
+<html>
+<head>
+    <meta charset="utf-8" content="text/html">
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/main.css" type="text/css">
+    <link rel="import" href="test.html" type="text/html">
+    <script type="text/javascript" src="js/jQuery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="js/underscore-min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <title>Main</title>
+</head>
+<body>
+<div id="mainContainer" class="container">
+    <div id="errorMassage" class="error row hide">Sorry, something went wrong, please try again</div>
+    <div id="welcome" class="row>">
+        <div id="modeSelector">
+            <p>Select a mode</p>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="adminMode" value="admin">
+                <label class="form-check-label" for="adminMode">Admin mode</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="userMode" value="user">
+                <label class="form-check-label" for="userMode">User mode</label>
+            </div>
+        </div>
+        <div>Welcome to the Electronic Warehouse</div>
+        <button onclick="showGoods()">Show me goods!</button>
+    </div>
+    <div id="tableContainer" class="row hide">
+        
+    </div>
+    <div id="addProductContainer" class="row hide">
+        <button onclick="showAddProduct()">Create a product</button>
+        <div id="addNewProductContainer" class="hide">
+            <form action="javascript:void(0);" onsubmit="addProduct()">
+                <label>Input name</label><input id="nameInput" type="text" maxlength="15" pattern="^[a-zA-Zа-яА-Я]+$" required/>
+                <label>Input cost</label><input id="costInput" type="number" maxlength="8"  required/>
+                <label>Input count</label><input id="countInput" type="number" maxlength="8" required/>
+                <button type="submit">Confirm</button>
+            </form>
+        </div>
+    </div>
+
+    <script type="text/template" id="rowTemplate">
+        <tr id="productId_<%= id %>">
+            <td><%= number %></td>
+            <td><%= name %></td>
+            <td><%= cost %></td>
+            <td><%= count %></td>
+            <% if (isAdminMode) { %>
+                <td onClick="editProduct('productId_<%= id %>', '<%= id %>', '<%= number %>', '<%= name %>', '<%= cost %>', '<%= count %>')">Edit</td>
+                <td onClick="removeProduct(<%= id %>)">Remove</td>
+            <%} %>
+        </tr>
+    </script>
+
+    <script type="text/template" id="tableTemplate">
+        <table id="allTable" class="table">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Cost</th>
+                <th>Count</th>
+                <% if (isAdminMode) { %>
+                    <th>Edit?</td>
+                    <th>Remove?</td>
+                <%} %>
+            </tr>
+            </thead>
+            <tbody id="allTableBody">
+
+            </tbody>
+        </table>
+    </script>
+
+    <script type="text/template" id="editableRowTemplate">
+        <tr id="productId_<%= id %>">
+            <td><%= number %></td>
+            <td><input id="nameInput" value="<%= name %>" type="text" maxlength="15" pattern="^[a-zA-Zа-яА-Я]+$" required/></td>
+            <td><input id="nameInput" value="<%= cost %>"  type="number" maxlength="8"  required/></td>
+            <td><input id="nameInput" value="<%= count %>" type="number" maxlength="8"  required/></td>
+            <td onClick="confirmEditing('productId_<%= id %>', '<%= id %>')">Confirm</td>
+            <td onClick="removeProduct(<%= id %>)">Remove</td>
+        </tr>
+    </script>
+
+</div>
+</body>
+</html>

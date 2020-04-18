@@ -1,0 +1,69 @@
+body {
+    background: linear-gradient(to top, #1f9bfe, #a2d7f1);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.table {
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border: 1px solid #969696;
+}
+
+.table tr {
+    font-size: 14pt;
+}
+
+.table td, .table th {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.table thead th {
+    border-top: 1px solid #969696;
+    vertical-align: middle;
+}
+
+#mainContainer {
+    display: flex;
+    background-color: mintcream;
+    min-height: 100%;
+    padding: 0;
+    justify-content: center;
+    justify-items: middle;
+}
+
+.hide {
+    display: none;
+}
+
+.error {
+    color: red
+}
+
+.btn {
+    border: none;
+    color: #f4ffff
+}
+
+.logo {
+    width: 140px;
+    height: 65px;
+}
+
+.top-nav {
+    margin-top: 20px;
+    background-color: #4a76a8;
+    padding: 10px;
+}
+
+.top-nav_menu li {
+    margin-right: 30px;
+}
+
+.top-nav_menu li a {
+    text-decoration: none;
+    color: yellow;
+
+}
+
+
